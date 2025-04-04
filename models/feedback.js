@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { type } = require('os');
 
 
 const feedbackSchema = new mongoose.Schema({
@@ -11,7 +10,7 @@ const feedbackSchema = new mongoose.Schema({
     employee_id:{
         type: String,
         required: true,
-    }
+    },
     feedbacks: {
       type: [
         {

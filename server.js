@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const auth = require("./routes/auth");
 
 const app = express();
 app.use(express.json());
@@ -38,6 +39,12 @@ mongoose
   });
 
 // --- API Endpoints ---
+
+app.use("/auth", auth); // Use the auth routes
+
+
+
+
 
 // Endpoint to receive activity logs from the client
 app.post("/log_activity", async (req, res) => {
@@ -179,7 +186,7 @@ async function updateWorkTimes() {
       `Work time updated in DB for ${result.modifiedCount} employees.`,
     );
   } catch (error) {
-    console.error("Error during periodic work time update:", error.message);
+    // console.error("Error during periodic work time update:", error.message);
   }
   // console.log("--- Work Time Update Complete ---\n");
 }

@@ -1,106 +1,29 @@
-const mongoose = require ('mongoose');{
+const mongoose = require('mongoose');
+
+// Define a reusable sub-schema for people
+const personSchema = new mongoose.Schema({
+    first_name: { type: String, required: true },
+    last_name: { type: String, required: true },
+    Email_ID: { type: String, required: true },
+    Phone_Number: { type: String, required: true },
+    position: { type: String }, // only for employee; optional for others
+}, { _id: false });
+
 const companySchema = new mongoose.Schema({
     Company_Name: {
         type: String,
         required: true,
     },
-
-    Company_ID: {
+    role: { // manager, employee, teamLead, HR
         type: String,
         required: true,
+        enum: ['manager', 'employee', 'teamLead', 'HR'], // optional validation
     },
-
-     // manager // employee // teamLead // HR
-    role:{ 
-        type: String,
-        required: true,
-    },
-
-    employee:{
-        first_name : {
-            type: String,
-            required: true,
-        },
-        last_name: {
-            type: String,
-            required: true,
-        },
-        Email_ID: {
-            type: String,
-            required: true,
-        },
-        Phone_Number: {
-            type: String,
-            required: true,
-        },
-        position: {
-            type: String,
-            required: true,
-        },
-    },
-
-    manager:{
-        first_name : {
-            type: String,
-            required: true,
-        },
-        last_name: {
-            type: String,
-            required: true,
-        },
-        Email_ID: {
-            type: String,
-            required: true,
-        },
-        Phone_Number: {
-            type: String,
-            required: true,
-        },
-
-    },
-
-    teamlead:{
-        first_name : {
-            type: String,
-            required: true,
-        },
-        last_name: {
-            type: String,
-            required: true,
-        },
-        Email_ID: {
-            type: String,
-            required: true,
-        },
-        Phone_Number: {
-            type: String,
-            required: true,
-        },
-
-    },
-
-    hr:{
-        first_name : {
-            type: String,
-            required: true,
-        },
-        last_name: {
-            type: String,
-            required: true,
-        },
-        Email_ID: {
-            type: String,
-            required: true,
-        },
-        Phone_Number: {
-            type: String,
-            required: true,
-        },
-
-    }
-
+    employee: personSchema,
+    manager: personSchema,
+    teamlead: personSchema,
+    hr: personSchema
 });
 
 const Company = mongoose.model('Company', companySchema);
-module.exports = Company; // Export the model correctly
-}
+module.exports = Company;
