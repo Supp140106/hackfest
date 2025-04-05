@@ -5,6 +5,7 @@ const auth = require("./routes/auth");
 const feedback = require("./routes/feedback");
 const page = require("./page_router/pagerouting");
 const api = require("./api/team");
+const Employee = require("./models/Employeetrack"); // Import the Employee model
 
 const app = express();
 app.use(express.json());

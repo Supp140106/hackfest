@@ -3,11 +3,28 @@ const Company = require('../models/company'); // Assuming you have a Company mod
 const Team = require('../models/team');
 
 
-router.post('/api/teams', async (req, res) => {
+router.post('/teams', async (req, res) => {
     try {
         const { team_id, Team_Name, Manager, domain_of_the_team, Employee: employeeNames } = req.body;
     
-        // Step 1: Loop through each name and search in Company collection
+        // Step 1: Find the manager by full name and role
+        const managerDoc = await Company.findOne({
+          role: 'manager',
+          $expr: {
+            $regexMatch: {
+              input: { $concat: ['$manager.first_name', ' ', '$manager.last_name'] },
+              regex: new RegExp(Manager, 'i')
+            }
+          }
+        });
+    
+        if (!managerDoc) {
+          return res.status(404).json({ error: `Manager "${Manager}" not found` });
+        }
+    
+        const Manager_id = managerDoc._id;
+    
+        // Step 2: Find all employees
         const employeeData = [];
         const notFound = [];
     
@@ -22,7 +39,7 @@ router.post('/api/teams', async (req, res) => {
             const emp = person.employee;
             employeeData.push({
               employee_name: `${emp.first_name} ${emp.last_name}`,
-              employee_id: emp.Email_ID // or Phone_Number as unique ID (adjust as needed)
+              employee_id: person._id // 🔥 Using MongoDB _id
             });
           } else {
             notFound.push({ first_name, last_name });
@@ -36,10 +53,12 @@ router.post('/api/teams', async (req, res) => {
           });
         }
     
+        // Step 3: Save team
         const newTeam = new Team({
           team_id,
           Team_Name,
           Manager,
+          Manager_id,
           domain_of_the_team,
           Employee: employeeData
         });
@@ -54,7 +73,8 @@ router.post('/api/teams', async (req, res) => {
       } catch (err) {
         console.error('Error creating team:', err);
         res.status(500).json({ error: 'Server error', details: err.message });
-      }}
+      }
+    }
  );
 
   module.exports = router;

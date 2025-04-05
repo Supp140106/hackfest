@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const teamSchema = new mongoose.Schema({
     team_id: {
-      type: Number,
+      type: String,
       required: true,
       unique: true
     },
@@ -11,6 +11,10 @@ const teamSchema = new mongoose.Schema({
       required: true
     },
     Manager: {
+      type: String,
+      required: true
+    },
+    Manager_id: {
       type: String,
       required: true
     },
@@ -25,7 +29,7 @@ const teamSchema = new mongoose.Schema({
           required: true
         },
         employee_id: {
-          type: Number,
+          type: String,
           required: true,
           unique: true
         }
