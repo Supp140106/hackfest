@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 // Define a reusable sub-schema for people
 const personSchema = new mongoose.Schema({
     first_name: { type: String, required: true },
+    employee_id: { type: String, required: true },  
     last_name: { type: String, required: true },
     Email_ID: { type: String, required: true },
     Phone_Number: { type: String, required: true },

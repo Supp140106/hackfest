@@ -4,54 +4,44 @@ const Company = require('../models/company');
 
 
 router.post('/signup', async (req, res) => {
-    try {
-      const { first_name, last_name, ph_num, position, Company_Name, Email_ID } = req.body;
-  
+  try {
+      const { first_name, last_name, ph_num, position, Company_Name, Email_ID, EmployeeID } = req.body;
+
       if (!Company_Name) {
-        return res.status(400).json({ error: 'Company_Name is required.' });
+          return res.status(400).json({ error: 'Company_Name is required.' });
       }
-  
-      if (!first_name || !last_name || !ph_num || !position || !Email_ID) {
-        return res.status(400).json({ error: 'Missing required fields.' });
+
+      if (!first_name || !last_name || !ph_num || !position || !Email_ID || !EmployeeID) {
+          return res.status(400).json({ error: 'Missing required fields.' });
       }
-  
-      const role = position.toLowerCase(); 
-  
-      if (!['manager', 'employee', 'teamlead', 'hr'].includes(role)) {
-        return res.status(400).json({ error: 'Invalid position provided.' });
-      }
-  
+
       const newCompanyData = {
-        Company_Name: Company_Name,
-        role: role,
+          Company_Name: Company_Name,
+          role: "employee",
       };
-  
+
       const personDetails = {
-        first_name: first_name,
-        last_name: last_name,
-        Email_ID: Email_ID,
-        Phone_Number: ph_num,
+          first_name: first_name,
+          last_name: last_name,
+          Email_ID: Email_ID,
+          Phone_Number: ph_num,
+          employee_id: EmployeeID,
+          position: position,
       };
-  
-      if (role === 'employee') {
-        newCompanyData.employee = personDetails;
-      } else if (role === 'manager') {
-        newCompanyData.manager = personDetails;
-      } else if (role === 'teamlead') {
-        newCompanyData.teamlead = personDetails;
-      } else if (role === 'hr') {
-        newCompanyData.hr = personDetails;
+
+      if (newCompanyData.role === 'employee') {
+          newCompanyData.employee = personDetails;
       }
-  
+
       const newCompany = new Company(newCompanyData);
       const savedCompany = await newCompany.save();
-  
+
       res.status(201).json(savedCompany);
-    } catch (error) {
+  } catch (error) {
       console.error('Error creating company:', error);
       res.status(500).json({ error: 'Failed to create company.' });
-    }
-  });
+  }
+});
 
 
 
