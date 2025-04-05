@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const auth = require("./routes/auth");
+const feedback = require("./routes/feedback");
 
 const app = express();
 app.use(express.json());
@@ -41,6 +42,7 @@ mongoose
 // --- API Endpoints ---
 
 app.use("/auth", auth); // Use the auth routes
+app.use("/feedback", feedback); // Use the feedback routes
 
 
 
