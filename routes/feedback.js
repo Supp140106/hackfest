@@ -24,11 +24,11 @@ router.post('/create', async (req, res) => {
       employee_id,
       feedbacks,
       comment,
-      status: 'completed', // Set the status to "completed"
+      status: 'completed', 
     });
 
     const savedFeedback = await newFeedback.save();
-    res.status(201).json(savedFeedback); // Respond with the created feedback and a 201 status code
+    res.status(201).json(savedFeedback); 
   } catch (error) {
     console.error('Error creating feedback:', error);
     if (error.name === 'ValidationError') {

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Company = require('../models/company'); // Adjust the path as necessary
+const Company = require('../models/company'); 
 
 
 router.post('/signup', async (req, res) => {
@@ -15,7 +15,7 @@ router.post('/signup', async (req, res) => {
         return res.status(400).json({ error: 'Missing required fields.' });
       }
   
-      const role = position.toLowerCase(); // Convert position to lowercase for case-insensitive matching
+      const role = position.toLowerCase(); 
   
       if (!['manager', 'employee', 'teamlead', 'hr'].includes(role)) {
         return res.status(400).json({ error: 'Invalid position provided.' });
@@ -64,7 +64,7 @@ router.post('/signup', async (req, res) => {
         return res.status(400).json({ error: 'Please provide either phone number or email.' });
       }
   
-      // Search in all possible person fields within the Company document
+     
       const company = await Company.findOne({
         $or: [
           { 'employee.Phone_Number': identifier },
