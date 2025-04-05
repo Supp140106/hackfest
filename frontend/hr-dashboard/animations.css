@@ -1,0 +1,475 @@
+/* Additional Animations CSS */
+/* This file contains extra animations and transitions to enhance the user experience */
+
+/* Button Hover Effects */
+.btn, .action-btn, .filter-btn, .start-task-btn, .pause-task-btn, .submit-task-btn, .view-feedback-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after, 
+.action-btn::after, 
+.filter-btn::after, 
+.start-task-btn::after, 
+.pause-task-btn::after, 
+.submit-task-btn::after, 
+.view-feedback-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.btn:hover::after, 
+.action-btn:hover::after, 
+.filter-btn:hover::after, 
+.start-task-btn:hover::after, 
+.pause-task-btn:hover::after, 
+.submit-task-btn:hover::after, 
+.view-feedback-btn:hover::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    20% {
+        transform: scale(25, 25);
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(40, 40);
+    }
+}
+
+/* Card Hover Animation */
+.card, .task-card, .stat-card {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card:hover, .task-card:hover, .stat-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+}
+
+/* Floating Animation for Icons */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.stat-icon, .logo {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Shake Animation for Notifications */
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(-10deg); }
+    20% { transform: rotate(10deg); }
+    30% { transform: rotate(-10deg); }
+    40% { transform: rotate(10deg); }
+    50% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.notification:hover i {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Progress Bar Animation */
+@keyframes progressFill {
+    from { width: 0; }
+    to { width: var(--progress-width); }
+}
+
+.progress {
+    animation: progressFill 1.5s ease-out forwards;
+}
+
+/* Calendar Day Hover Effect */
+.calendar-day, .mini-day {
+    transition: all 0.2s ease;
+}
+
+.calendar-day:hover, .mini-day:hover {
+    transform: scale(1.2);
+    background-color: rgba(74, 108, 247, 0.1);
+    font-weight: bold;
+}
+
+/* Task Status Indicator Pulse */
+@keyframes statusPulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.task-status.urgent {
+    animation: statusPulse 2s infinite;
+}
+
+/* Sidebar Menu Item Hover Animation */
+.menu-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: all 0.5s;
+}
+
+.menu-item:hover::after {
+    left: 100%;
+}
+
+/* Section Title Animation */
+.section-title {
+    position: relative;
+    overflow: hidden;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--primary-color);
+    transition: width 0.5s ease;
+}
+
+.section-title:hover::before {
+    width: 100%;
+}
+
+/* Form Input Focus Animation */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+    transform: translateY(-3px);
+}
+
+/* Task Card Entrance Animation */
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: scale(0.3);
+        filter: hue-rotate(180deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: hue-rotate(0deg);
+    }
+}
+
+.task-card {
+    animation: cardEntrance 0.5s ease-out forwards;
+}
+
+/* Typing Animation for Task Title */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+.task-title {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 1s steps(30, end);
+}
+
+/* Loading Spinner Animation */
+@keyframes spinner {
+    to { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(74, 108, 247, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spinner 1s linear infinite;
+    display: inline-block;
+}
+
+/* Page Transition Animation */
+@keyframes pageTransition {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.content-section.active {
+    animation: pageTransition 0.5s ease forwards;
+}
+
+/* Notification Badge Animation */
+@keyframes badgePulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+}
+
+.notification::after {
+    animation: badgePulse 2s infinite;
+}
+
+/* Chart Animation */
+@keyframes chartGrow {
+    from { height: 0; opacity: 0; }
+    to { height: 100%; opacity: 1; }
+}
+
+.chart-container {
+    overflow: hidden;
+}
+
+.chart-container canvas {
+    animation: chartGrow 1s ease-out forwards;
+}
+
+/* Task Filter Button Animation */
+.filter-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(74, 108, 247, 0.2), transparent);
+    transition: all 0.5s;
+}
+
+.filter-btn:hover::before {
+    left: 100%;
+}
+
+/* Calendar Event Animation */
+.event-item {
+    transition: all 0.3s ease;
+    transform-origin: left;
+}
+
+.event-item:hover {
+    transform: scale(1.03);
+    background-color: rgba(74, 108, 247, 0.1);
+}
+
+/* Performance Stat Animation */
+.performance-stat {
+    position: relative;
+    overflow: hidden;
+}
+
+.performance-stat::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    100% { transform: translateX(100%); }
+}
+
+/* Modal Animation */
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-50px) scale(0.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-content {
+    animation: modalFadeIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Hamburger Menu Animation */
+@keyframes hamburgerPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.hamburger-menu:hover i {
+    animation: hamburgerPulse 0.5s ease infinite;
+}
+
+/* Search Input Animation */
+.search-container input {
+    transition: all 0.3s ease;
+}
+
+.search-container input:focus {
+    width: 110%;
+    transform: translateX(-5%);
+}
+
+/* Task Priority Badge Animation */
+@keyframes priorityPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.task-priority.urgent {
+    animation: priorityPulse 1.5s infinite;
+}
+
+/* Deadline Date Animation */
+.deadline-date {
+    transition: all 0.3s ease;
+}
+
+.deadline-item:hover .deadline-date {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Activity Icon Animation */
+@keyframes iconSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.activity-item:hover .activity-icon i {
+    animation: iconSpin 1s ease;
+}
+
+/* Progress Bar Shine Effect */
+.progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: progressShine 2s infinite;
+}
+
+@keyframes progressShine {
+    100% { left: 100%; }
+}
+
+/* Task Meta Info Animation */
+.task-meta span {
+    transition: all 0.3s ease;
+}
+
+.task-meta span:hover {
+    transform: translateY(-3px);
+    color: var(--primary-color);
+}
+
+/* Form Submit Button Animation */
+@keyframes submitPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.form-actions .btn-primary {
+    animation: submitPulse 2s infinite;
+}
+
+/* Feedback Stars Animation */
+@keyframes starTwinkle {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+.stars i {
+    animation: starTwinkle 1.5s infinite;
+    animation-delay: calc(var(--i) * 0.3s);
+}
+
+.stars i:nth-child(1) { --i: 0; }
+.stars i:nth-child(2) { --i: 1; }
+.stars i:nth-child(3) { --i: 2; }
+.stars i:nth-child(4) { --i: 3; }
+.stars i:nth-child(5) { --i: 4; }
+
+/* Company Name Animation */
+@keyframes textGlow {
+    0% { text-shadow: 0 0 5px rgba(74, 108, 247, 0.5); }
+    50% { text-shadow: 0 0 20px rgba(74, 108, 247, 0.8); }
+    100% { text-shadow: 0 0 5px rgba(74, 108, 247, 0.5); }
+}
+
+.company-name:hover {
+    animation: textGlow 2s infinite;
+}
+
+/* Profile Image Animation */
+@keyframes profilePulse {
+    0% { border-color: var(--primary-color); }
+    50% { border-color: var(--success-color); }
+    100% { border-color: var(--primary-color); }
+}
+
+.profile img:hover {
+    animation: profilePulse 2s infinite;
+}
+
+/* Section Transition Animation */
+.content-section {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.content-section.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.content-section:not(.active) {
+    opacity: 0;
+    transform: translateX(20px);
+    display: none;
+}

@@ -1,0 +1,253 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden; /* Prevents scrolling on body */
+}
+
+/* Main Container */
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+/* Left Panel - Scrollable */
+.left-panel {
+    width: 50%;
+    height: 100vh;
+    overflow-y: auto; /* Enables vertical scrolling */
+    background-color: #f8f8f8;
+    position: relative;
+    padding-bottom: 2rem;
+}
+
+/* Ensures the left panel scrolls when the user scrolls anywhere */
+.container {
+    overflow: hidden;
+    position: relative;
+}
+.container:hover, .container:active {
+    overflow-y: auto;
+}
+
+/* Full Panel Image */
+.panel-image {
+    width: 100%;
+    height: 32%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Login Container */
+.login-container {
+    position: relative;
+    background-color: #ffffff;
+    padding: 2rem;
+    margin: 0 3rem 2rem 3rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+/* Circular Image with Upload */
+.circular-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 0.5rem; /* Reduced to bring label closer */
+    position: relative;
+}
+
+.circular-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.circular-image input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Logo Label and Edit Icon */
+.logo-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    font-size: 14px;
+    color: #000080;
+}
+
+.edit-icon {
+    font-size: 16px;
+    cursor: pointer;
+    color: #2543B1;
+    transition: color 0.3s;
+}
+
+.edit-icon:hover {
+    color: #1d338f;
+}
+
+/* Form Section */
+.form-section {
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 20px;
+    color: #000080;
+    margin-bottom: 0.5rem;
+    font-style: serif;
+}
+
+.form-input {
+    width: 110%;
+    padding: 10px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    font-size: 22.4px;
+    font-style: normal;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #2543B1;
+    box-shadow: 0 0 5px rgba(37, 67, 177, 0.3);
+}
+
+.name-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.half-width {
+    width: 50%;
+}
+
+.phone-input {
+    display: flex;
+    gap: 10px;
+}
+
+.country-code {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.phone-number {
+    flex-grow: 1;
+}
+
+/* Login and Signup */
+.login-signup {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.login-link {
+    color: #2543B1;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}
+
+/* Signup Button */
+.signup-button {
+    width: 200px;
+    height: 45px;
+    margin-top: 1rem;
+    background-color: #2543B1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.signup-button:hover {
+    background-color: #1d338f;
+}
+
+/* Scroll Spacer */
+.scroll-spacer {
+    height: 0;
+}
+
+/* Right Panel */
+.right-panel {
+    width: 50%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.right-panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container { flex-direction: column; }
+    .left-panel { width: 100%; }
+    .right-panel { display: none; }
+}
+
+/* Scrollbar Styling */
+
+/* Ensure full page scroll affects only the left-panel */
+body {
+    overflow-y: auto;
+}
+
+.left-panel::-webkit-scrollbar {
+    width: 0px;
+   
+}
+
+.left-panel::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.left-panel::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.left-panel::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

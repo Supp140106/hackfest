@@ -38,19 +38,20 @@ mongoose
   })
   .catch((err) => {
     console.error("Error connecting to MongoDB:", err.message);
-    // ** If you still get certificate errors here, troubleshoot the CA certs / network / bun issues **
+    
     process.exit(1); // Exit if database connection fails
   });
 
-// --- API Endpoints ---
 
-//page based routing
 
 
 
 
 
 app.use("/page", page); // Use the page routing
+
+
+
 app.use("/auth", auth); // Use the auth routes
 app.use("/feedback", feedback); // Use the feedback routes
 app.use("/api", api); // Use the API routes

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./animations.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo-container">
+                <h2 class="logo">Flow</h2>
+            </div>
+            <div class="menu-items">
+                <div class="menu-item active" data-section="create-team">
+                    <i class="fas fa-users"></i>
+                    <span>Create Team</span>
+                </div>
+                <div class="menu-item" data-section="assign-project">
+                    <i class="fas fa-tasks"></i>
+                    <span>Assign Project</span>
+                </div>
+                <div class="menu-item" data-section="employee-list">
+                    <i class="fas fa-user-friends"></i>
+                    <span>Employee List</span>
+                </div>
+                <div class="menu-item" data-section="team-performance">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Team Performance</span>
+                </div>
+            </div>
+            <div class="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <div class="company-info">
+                    <h1 class="company-name">Company Name</h1>
+                </div>
+                <div class="user-info">
+                    <div class="notification">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="profile">
+                        <img src="https://via.placeholder.com/40" alt="Profile">
+                        <span>HR Manager</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Create Team Section -->
+            <section id="create-team" class="content-section active">
+                <h2 class="section-title">Create Team</h2>
+                <div class="card form-card">
+                    <form id="team-form">
+                        <div class="form-group">
+                            <label for="team-id">Team ID</label>
+                            <input type="text" id="team-id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="team-name">Team Name</label>
+                            <input type="text" id="team-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="team-manager">Select Manager</label>
+                            <select id="team-manager" required>
+                                <option value="">Select a manager</option>
+                                <option value="manager1">Manager 1</option>
+                                <option value="manager2">Manager 2</option>
+                                <option value="manager3">Manager 3</option>
+                                <option value="manager4">Manager 4</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Select Employees</label>
+                            <div class="employee-selection">
+                                <div class="employee-checkbox">
+                                    <input type="checkbox" id="emp1" value="Employee 1">
+                                    <label for="emp1">Employee 1</label>
+                                </div>
+                                <div class="employee-checkbox">
+                                    <input type="checkbox" id="emp2" value="Employee 2">
+                                    <label for="emp2">Employee 2</label>
+                                </div>
+                                <div class="employee-checkbox">
+                                    <input type="checkbox" id="emp3" value="Employee 3">
+                                    <label for="emp3">Employee 3</label>
+                                </div>
+                                <div class="employee-checkbox">
+                                    <input type="checkbox" id="emp4" value="Employee 4">
+                                    <label for="emp4">Employee 4</label>
+                                </div>
+                                <div class="employee-checkbox">
+                                    <input type="checkbox" id="emp5" value="Employee 5">
+                                    <label for="emp5">Employee 5</label>
+                                </div>
+                                <div class="employee-checkbox">
+                                    <input type="checkbox" id="emp6" value="Employee 6">
+                                    <label for="emp6">Employee 6</label>
+                                </div>
+                                <div class="employee-checkbox">
+                                    <input type="checkbox" id="emp7" value="Employee 7">
+                                    <label for="emp7">Employee 7</label>
+                                </div>
+                                <div class="employee-checkbox">
+                                    <input type="checkbox" id="emp8" value="Employee 8">
+                                    <label for="emp8">Employee 8</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Save Team</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Assign Project Section -->
+            <section id="assign-project" class="content-section">
+                <h2 class="section-title">Assign Project</h2>
+                <div class="card form-card">
+                    <form id="project-form">
+                        <div class="form-group">
+                            <label for="project-name">Project Name</label>
+                            <input type="text" id="project-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="project-team">Select Team</label>
+                            <select id="project-team" required>
+                                <option value="">Select a team</option>
+                                <option value="team1">Design Team</option>
+                                <option value="team2">Frontend Team</option>
+                                <option value="team3">Backend Team</option>
+                                <option value="team4">QA Team</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="project-deadline">Deadline</label>
+                            <input type="date" id="project-deadline" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="project-description">Project Description</label>
+                            <textarea id="project-description" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="project-documents">Project Documents</label>
+                            <input type="file" id="project-documents" multiple>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Assign Project</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Employee List Section -->
+            <section id="employee-list" class="content-section">
+                <h2 class="section-title">Employee List</h2>
+                <div class="search-container">
+                    <input type="text" id="employee-search" placeholder="Search employees...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="employee-cards">
+                    <!-- Employee cards will be dynamically generated -->
+                </div>
+            </section>
+
+            <!-- Team Performance Section -->
+            <section id="team-performance" class="content-section">
+                <h2 class="section-title">Team Performance</h2>
+                <div class="team-performance-container">
+                    <div class="team-filter">
+                        <label for="team-filter">Select Team:</label>
+                        <select id="team-filter">
+                            <option value="all">All Teams</option>
+                            <option value="team1">Design Team</option>
+                            <option value="team2">Frontend Team</option>
+                            <option value="team3">Backend Team</option>
+                            <option value="team4">QA Team</option>
+                        </select>
+                    </div>
+                    <div class="performance-charts">
+                        <div class="chart-container">
+                            <h3>Team Productivity</h3>
+                            <canvas id="productivity-chart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <h3>Project Completion Rate</h3>
+                            <canvas id="completion-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Employee Review Modal -->
+    <div class="modal" id="employee-review-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Employee Review</h2>
+            <div class="employee-info">
+                <img src="https://via.placeholder.com/60" alt="Employee" class="employee-avatar">
+                <div class="employee-details">
+                    <h3 id="modal-employee-name">Employee Name</h3>
+                    <p id="modal-employee-position">Position</p>
+                </div>
+            </div>
+            <div class="task-info">
+                <h4>Current Task</h4>
+                <p id="modal-task-name">Task Name</p>
+                <p id="modal-task-description">Task Description</p>
+            </div>
+            <div class="review-form">
+                <div class="form-group">
+                    <label for="review-feedback">Feedback</label>
+                    <textarea id="review-feedback" rows="4"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-success" id="verify-task">Verify</button>
+                    <button class="btn btn-warning" id="reassign-task">Reassign</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Performance Modal -->
+    <div class="modal" id="performance-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Employee Performance</h2>
+            <div class="employee-info">
+                <img src="https://via.placeholder.com/60" alt="Employee" class="employee-avatar">
+                <div class="employee-details">
+                    <h3 id="modal-performance-name">Employee Name</h3>
+                </div>
+            </div>
+            <div class="performance-charts">
+                <div class="chart-container">
+                    <h4>Monthly Performance</h4>
+                    <canvas id="employee-performance-chart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h4>Task Completion Rate</h4>
+                    <canvas id="task-completion-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/hr-script.js"></script>
+</body>
+</html>
