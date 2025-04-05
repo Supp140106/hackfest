@@ -3,6 +3,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const auth = require("./routes/auth");
 const feedback = require("./routes/feedback");
+const page = require("./page_router/pagerouting");
+const api = require("./api/team");
 
 const app = express();
 app.use(express.json());
@@ -41,8 +43,16 @@ mongoose
 
 // --- API Endpoints ---
 
+//page based routing
+
+
+
+
+
+app.use("/page", page); // Use the page routing
 app.use("/auth", auth); // Use the auth routes
 app.use("/feedback", feedback); // Use the feedback routes
+app.use("/api", api); // Use the API routes
 
 
 

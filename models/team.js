@@ -1,60 +1,39 @@
 const mongoose = require('mongoose');
-const { type } = require('os');
+
 const teamSchema = new mongoose.Schema({
-    project_name: {
-        type: String,
-        required: true,
+    team_id: {
+      type: Number,
+      required: true,
+      unique: true
     },
-
-    assigned_manager:{
-        type: String,
-        required: true,
+    Team_Name: {
+      type: String,
+      required: true
     },
-
-    project_description: {
-        type: String,
-        required: true,
+    Manager: {
+      type: String,
+      required: true
     },
-
-    deadline_date:{
-        type: Date,
-        required: true,
+    domain_of_the_team: {
+      type: String,
+      required: false
     },
-
-    members_count: {
-        type: Number,
-        required: true,
-    },
-
-    teamMembers:{
-        employee1 : {
-            name:{
-                type: String,
-                required: true,
-            },
-
-            employee_role:{
-                type: String,
-                required: true,
-            },
-
-            tasks_assigned:{
-                type: String,
-                required: true,
-            },
-
-            email:{
-                type: String,
-                required: true,
-            },
-            phone:{
-                type: String,
-                required: true,
-            },    
+    Employee: [
+      {
+        employee_name: {
+          type: String,
+          required: true
+        },
+        employee_id: {
+          type: Number,
+          required: true,
+          unique: true
         }
-    }
+      }
+    ]
+  });
+  
+  // Create a Mongoose model based on the schema
+  const Team = mongoose.model('Team', teamSchema);
 
-});
-
-const Team = mongoose.model('Team', teamSchema);
-module.exports = Team; 
+  module.exports = Team;

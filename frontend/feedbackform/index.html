@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atom HR - Employee Feedback</title>
+    <link rel="stylesheet" href="feedbackPage.css">
+    <script defer src="feedbackPage.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">Atom HR</div>
+        
+        <div class="header-right">
+            <button id="theme-toggle">🌙</button>
+            <span class="notification-icon">🔔</span>
+            <div class="user-info">
+                <span class="username">andu</span>
+                <div class="user-icon">A</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="welcome">
+            <h1>Welcome, <span class="highlight">andu!</span></h1>
+            <p>Organize your work and improve team performance</p>
+        </section>
+
+        <section class="feedback">
+            <h2>Employee Feedback</h2>
+            <p>Please rate your experience and provide additional feedback if needed</p>
+            <div class="feedback-form">
+                <div class="question">
+                    <span>How would you rate your overall work experience this week?</span>
+                    <div class="stars" data-question="1"></div>
+                </div>
+                <div class="question">
+                    <span>How satisfied are you with the tools and resources provided to you?</span>
+                    <div class="stars" data-question="2"></div>
+                </div>
+                <div class="question">
+                    <span>How well do you feel your team collaboration has been?</span>
+                    <div class="stars" data-question="3"></div>
+                </div>
+                <div class="question">
+                    <span>How would you rate your work-life balance in the current period?</span>
+                    <div class="stars" data-question="4"></div>
+                </div>
+                <div class="question">
+                    <span>How satisfied are you with the feedback from your team leader?</span>
+                    <div class="stars" data-question="5"></div>
+                </div>
+                <div class="comments">
+                    <label for="comments">Additional Comments (Optional)</label>
+                    <textarea id="comments" placeholder="Share any additional thoughts or suggestions..."></textarea>
+                </div>
+                <button class="submit-btn">Submit Feedback</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
