@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./employee-style.css">
+    <link rel="stylesheet" href="./animations.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo-container">
+                <h2 class="logo">Flow</h2>
+            </div>
+            <div class="menu-items">
+                <div class="menu-item active" data-section="dashboard">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="menu-item" data-section="my-tasks">
+                    <i class="fas fa-tasks"></i>
+                    <span>My Tasks</span>
+                </div>
+                <div class="menu-item" data-section="calendar">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Calendar</span>
+                </div>
+                <div class="menu-item" data-section="project-overview">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Project Overview</span>
+                </div>
+                <div class="menu-item" data-section="add-task">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Add New Task</span>
+                </div>
+            </div>
+            <div class="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <div class="company-info">
+                    <h1 class="company-name"><%= companyName %></h1>
+                </div>
+                <div class="user-info">
+                    <div class="notification">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="profile">
+                        <img src="https://via.placeholder.com/40" alt="Profile">
+                        <span>Employee Name</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <h2 class="section-title">Dashboard</h2>
+                
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Completed Tasks</h3>
+                            <p class="stat-value">12</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-spinner"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>In Progress</h3>
+                            <p class="stat-value">5</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Urgent Tasks</h3>
+                            <p class="stat-value">3</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Hours Worked</h3>
+                            <p class="stat-value">87</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-content">
+                    <div class="dashboard-left">
+                        <div class="card urgent-tasks">
+                            <div class="card-header">
+                                <h3>Urgent Tasks</h3>
+                                <button class="view-all-btn" data-section="my-tasks">View All</button>
+                            </div>
+                            <div class="task-list">
+                                <div class="task-item">
+                                    <div class="task-status urgent"></div>
+                                    <div class="task-info">
+                                        <h4>Complete Project Proposal</h4>
+                                        <p>Due: Today</p>
+                                    </div>
+                                    <div class="task-actions">
+                                        <button class="start-task-btn" data-task-id="1">Start</button>
+                                    </div>
+                                </div>
+                                <div class="task-item">
+                                    <div class="task-status urgent"></div>
+                                    <div class="task-info">
+                                        <h4>Client Meeting Preparation</h4>
+                                        <p>Due: Tomorrow</p>
+                                    </div>
+                                    <div class="task-actions">
+                                        <button class="start-task-btn" data-task-id="2">Start</button>
+                                    </div>
+                                </div>
+                                <div class="task-item">
+                                    <div class="task-status urgent"></div>
+                                    <div class="task-info">
+                                        <h4>Fix Critical Bug</h4>
+                                        <p>Due: Tomorrow</p>
+                                    </div>
+                                    <div class="task-actions">
+                                        <button class="start-task-btn" data-task-id="3">Start</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card recent-activity">
+                            <div class="card-header">
+                                <h3>Recent Activity</h3>
+                            </div>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="activity-info">
+                                        <p>You completed <strong>Homepage Design</strong></p>
+                                        <span class="activity-time">2 hours ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-comment"></i>
+                                    </div>
+                                    <div class="activity-info">
+                                        <p>Manager commented on <strong>API Documentation</strong></p>
+                                        <span class="activity-time">Yesterday</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-plus"></i>
+                                    </div>
+                                    <div class="activity-info">
+                                        <p>You were assigned to <strong>New Feature Development</strong></p>
+                                        <span class="activity-time">Yesterday</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="activity-info">
+                                        <p>You completed <strong>User Testing</strong></p>
+                                        <span class="activity-time">2 days ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-right">
+                        <div class="card upcoming-deadlines">
+                            <div class="card-header">
+                                <h3>Upcoming Deadlines</h3>
+                            </div>
+                            <div class="deadline-list">
+                                <div class="deadline-item">
+                                    <div class="deadline-date">
+                                        <span class="day">15</span>
+                                        <span class="month">Apr</span>
+                                    </div>
+                                    <div class="deadline-info">
+                                        <h4>Project Milestone 1</h4>
+                                        <p>Complete frontend implementation</p>
+                                    </div>
+                                </div>
+                                <div class="deadline-item">
+                                    <div class="deadline-date">
+                                        <span class="day">22</span>
+                                        <span class="month">Apr</span>
+                                    </div>
+                                    <div class="deadline-info">
+                                        <h4>Team Presentation</h4>
+                                        <p>Prepare slides and demo</p>
+                                    </div>
+                                </div>
+                                <div class="deadline-item">
+                                    <div class="deadline-date">
+                                        <span class="day">30</span>
+                                        <span class="month">Apr</span>
+                                    </div>
+                                    <div class="deadline-info">
+                                        <h4>Project Completion</h4>
+                                        <p>Final delivery and documentation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card performance-summary">
+                            <div class="card-header">
+                                <h3>Performance Summary</h3>
+                            </div>
+                            <div class="performance-chart-container">
+                                <canvas id="performance-chart"></canvas>
+                            </div>
+                            <div class="performance-stats">
+                                <div class="performance-stat">
+                                    <span class="stat-label">Efficiency</span>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 85%"></div>
+                                    </div>
+                                    <span class="stat-value">85%</span>
+                                </div>
+                                <div class="performance-stat">
+                                    <span class="stat-label">Quality</span>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 92%"></div>
+                                    </div>
+                                    <span class="stat-value">92%</span>
+                                </div>
+                                <div class="performance-stat">
+                                    <span class="stat-label">Timeliness</span>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 78%"></div>
+                                    </div>
+                                    <span class="stat-value">78%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- My Tasks Section -->
+            <section id="my-tasks" class="content-section">
+                <h2 class="section-title">My Tasks</h2>
+                
+                <div class="tasks-filter">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="in-progress">In Progress</button>
+                        <button class="filter-btn" data-filter="completed">Completed</button>
+                        <button class="filter-btn" data-filter="urgent">Urgent</button>
+                    </div>
+                    <div class="search-container">
+                        <input type="text" id="task-search" placeholder="Search tasks...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                
+                <div class="tasks-container">
+                    <div class="task-card" data-status="urgent">
+                        <div class="task-header">
+                            <span class="task-priority urgent">Urgent</span>
+                            <span class="task-date">Due: Apr 10, 2025</span>
+                        </div>
+                        <h3 class="task-title">Complete Project Proposal</h3>
+                        <p class="task-description">Finalize the project proposal document with all requirements and specifications.</p>
+                        <div class="task-meta">
+                            <span class="task-project"><i class="fas fa-folder"></i> Marketing Campaign</span>
+                            <span class="task-time"><i class="fas fa-clock"></i> Est. 4 hours</span>
+                        </div>
+                        <div class="task-actions">
+                            <button class="start-task-btn" data-task-id="1">Start Task</button>
+                            <button class="pause-task-btn hidden" data-task-id="1">Pause Task</button>
+                            <button class="submit-task-btn hidden" data-task-id="1">Submit Task</button>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card" data-status="in-progress">
+                        <div class="task-header">
+                            <span class="task-priority medium">Medium</span>
+                            <span class="task-date">Due: Apr 15, 2025</span>
+                        </div>
+                        <h3 class="task-title">Design User Interface</h3>
+                        <p class="task-description">Create wireframes and mockups for the new application interface.</p>
+                        <div class="task-meta">
+                            <span class="task-project"><i class="fas fa-folder"></i> App Redesign</span>
+                            <span class="task-time"><i class="fas fa-clock"></i> Est. 8 hours</span>
+                        </div>
+                        <div class="task-actions">
+                            <button class="start-task-btn" data-task-id="2">Start Task</button>
+                            <button class="pause-task-btn hidden" data-task-id="2">Pause Task</button>
+                            <button class="submit-task-btn hidden" data-task-id="2">Submit Task</button>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card" data-status="completed">
+                        <div class="task-header">
+                            <span class="task-priority low">Low</span>
+                            <span class="task-date">Completed: Apr 2, 2025</span>
+                        </div>
+                        <h3 class="task-title">Research Competitors</h3>
+                        <p class="task-description">Analyze competitor products and create a comparison report.</p>
+                        <div class="task-meta">
+                            <span class="task-project"><i class="fas fa-folder"></i> Market Analysis</span>
+                            <span class="task-time"><i class="fas fa-clock"></i> 6 hours spent</span>
+                        </div>
+                        <div class="task-actions">
+                            <button class="view-feedback-btn" data-task-id="3">View Feedback</button>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card" data-status="urgent">
+                        <div class="task-header">
+                            <span class="task-priority urgent">Urgent</span>
+                            <span class="task-date">Due: Apr 12, 2025</span>
+                        </div>
+                        <h3 class="task-title">Fix Critical Bug</h3>
+                        <p class="task-description">Resolve the authentication issue affecting user logins.</p>
+                        <div class="task-meta">
+                            <span class="task-project"><i class="fas fa-folder"></i> Bug Fixes</span>
+                            <span class="task-time"><i class="fas fa-clock"></i> Est. 3 hours</span>
+                        </div>
+                        <div class="task-actions">
+                            <button class="start-task-btn" data-task-id="4">Start Task</button>
+                            <button class="pause-task-btn hidden" data-task-id="4">Pause Task</button>
+                            <button class="submit-task-btn hidden" data-task-id="4">Submit Task</button>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card" data-status="in-progress">
+                        <div class="task-header">
+                            <span class="task-priority medium">Medium</span>
+                            <span class="task-date">Due: Apr 20, 2025</span>
+                        </div>
+                        <h3 class="task-title">Create Documentation</h3>
+                        <p class="task-description">Write comprehensive documentation for the API endpoints.</p>
+                        <div class="task-meta">
+                            <span class="task-project"><i class="fas fa-folder"></i> API Development</span>
+                            <span class="task-time"><i class="fas fa-clock"></i> Est. 5 hours</span>
+                        </div>
+                        <div class="task-actions">
+                            <button class="start-task-btn" data-task-id="5">Start Task</button>
+                            <button class="pause-task-btn hidden" data-task-id="5">Pause Task</button>
+                            <button class="submit-task-btn hidden" data-task-id="5">Submit Task</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Calendar Section -->
+            <section id="calendar" class="content-section">
+                <h2 class="section-title">Calendar</h2>
+                
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                        <h3 id="current-month">April 2025</h3>
+                        <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    
+                    <div class="weekdays">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    
+                    <div class="calendar-days" id="calendar-days">
+                        <!-- Calendar days will be generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="calendar-events">
+                    <h3>Events for <span id="selected-date">April 5, 2025</span></h3>
+                    <div class="event-list" id="event-list">
+                        <div class="event-item">
+                            <div class="event-time">09:00 AM - 10:30 AM</div>
+                            <div class="event-details">
+                                <h4>Team Meeting</h4>
+                                <p>Weekly progress update</p>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">01:00 PM - 03:00 PM</div>
+                            <div class="event-details">
+                                <h4>Project Work</h4>
+                                <p>Complete Project Proposal</p>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">04:00 PM - 05:00 PM</div>
+                            <div class="event-details">
+                                <h4>Client Call</h4>
+                                <p>Discuss project requirements</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Project Overview Section -->
+            <section id="project-overview" class="content-section">
+                <h2 class="section-title">Project Overview</h2>
+                
+                <div class="performance-overview">
+                    <div class="performance-calendar">
+                        <h3>Monthly Performance</h3>
+                        <div class="mini-calendar">
+                            <div class="mini-calendar-header">
+                                <h4>April 2025</h4>
+                            </div>
+                            <div class="mini-weekdays">
+                                <div>S</div>
+                                <div>M</div>
+                                <div>T</div>
+                                <div>W</div>
+                                <div>T</div>
+                                <div>F</div>
+                                <div>S</div>
+                            </div>
+                            <div class="mini-days">
+                                <!-- Days will be generated by JavaScript with performance indicators -->
+                            </div>
+                        </div>
+                        <div class="performance-legend">
+                            <div class="legend-item">
+                                <div class="legend-color good"></div>
+                                <span>Good Performance</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color partial"></div>
+                                <span>Partial Completion</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color poor"></div>
+                                <span>Needs Improvement</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="performance-charts">
+                        <div class="chart-container">
+                            <h3>Monthly Analysis</h3>
+                            <canvas id="monthly-performance-chart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <h3>Task Completion Rate</h3>
+                            <canvas id="task-completion-rate-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-stats">
+                    <div class="stat-card">
+                        <div class="stat-value">85%</div>
+                        <div class="stat-label">Overall Efficiency</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">92%</div>
+                        <div class="stat-label">Task Quality</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">78%</div>
+                        <div class="stat-label">On-Time Completion</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">24</div>
+                        <div class="stat-label">Tasks Completed</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Add New Task Section -->
+            <section id="add-task" class="content-section">
+                <h2 class="section-title">Add New Task</h2>
+                
+                <div class="card form-card">
+                    <form id="new-task-form">
+                        <div class="form-group">
+                            <label for="task-title">Task Title</label>
+                            <input type="text" id="task-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="task-description">Description</label>
+                            <textarea id="task-description" rows="4" required></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="task-project">Project</label>
+                                <select id="task-project" required>
+                                    <option value="">Select Project</option>
+                                    <option value="marketing">Marketing Campaign</option>
+                                    <option value="redesign">App Redesign</option>
+                                    <option value="api">API Development</option>
+                                    <option value="bugs">Bug Fixes</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="task-priority">Priority</label>
+                                <select id="task-priority" required>
+                                    <option value="low">Low</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="high">High</option>
+                                    <option value="urgent">Urgent</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="task-due-date">Due Date</label>
+                                <input type="date" id="task-due-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="task-estimated-time">Estimated Hours</label>
+                                <input type="number" id="task-estimated-time" min="1" max="100" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="task-attachments">Attachments (Optional)</label>
+                            <input type="file" id="task-attachments" multiple>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Add Task</button>
+                            <button type="reset" class="btn btn-secondary">Clear Form</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div class="modal" id="feedback-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Task Feedback</h2>
+            <div class="task-info">
+                <h3 id="modal-task-title">Task Title</h3>
+                <p id="modal-task-description">Task Description</p>
+            </div>
+            <div class="feedback-content">
+                <h4>Feedback from Manager</h4>
+                <p id="modal-feedback-text">Great job on completing this task! The research was thorough and the report was well-structured. The competitive analysis will be very helpful for our strategy planning.</p>
+            </div>
+            <div class="feedback-rating">
+                <h4>Rating</h4>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span>4.5/5</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/employee-script.js"></script>
+</body>
+</html>
